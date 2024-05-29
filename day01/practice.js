@@ -1,0 +1,2 @@
+alert("from js file!!!"
+)
