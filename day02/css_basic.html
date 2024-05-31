@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>기본</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        /* CSS 기본 문법
+            선택자 {키:값, 키 값; 키값; }
+        */
+        h1{  
+            color: crimson; 
+            background-color: aqua; 
+            margin: 20px; 
+            padding: 10px;
+        }
+        h2{
+            color: blueviolet;
+        }
+        h1,h2,li{
+            margin: 5px;
+            padding: 10px;
+        }
+
+        #header{
+            width: 600px; margin: 0 auto;
+            background-color: chocolate;
+        }
+
+        #section{
+            width: 600px; margin: 0 auto;
+            overflow: hidden;
+        }
+        #content{
+            width: 400px; height: 150px;
+            background-color: aqua;
+        }
+        #aside{
+            width: 200px; height: 200px;
+            background-color: greenyellow;
+        }
+        .favorite{
+            color: coral;
+        }
+        .options{
+            background-color: black;
+        }
+        input[type="text"]{background-color: yellow;}
+        input[type="submit"]{background-color: red;}
+        input[type="password"]{background-color: yellowgreen;}
+        /* 후손 선택자 */
+        #header h4{color: darksalmon;}
+
+        
+    </style>
+</head>
+<body>
+    <h1>CSS BASIC</h1>
+    <h2>Basic 문법</h2>
+    <hr>
+    <div>
+        <ul>
+            <li class = "favorite options">기본선택자</li>
+            <li>아이디, 클래스선택자</li>
+            <li>속성선택자</li>
+            <li class="favorite">후손선택자택자</li>
+        </ul>
+    </div>
+    <div id="header">
+        <h3>#header 영역</h3>
+        <div id="nav">
+            <h4>Navigation(메뉴)영역</h4>
+        </div>
+        <div>
+            <h4>옵션</h4>
+        </div>
+    </div>
+    <div id = "section">
+        <!-- id는 같은 값을 한페이지 두개 넣으면 안됨 -->
+        <div id="content">
+            <h3>#content영역</h3>
+        </div>
+        <div id="aside">
+            <h3>#aside영역</h3>
+            <ul id="menu">
+                <li><a href="#">영한소개</a></li>
+                <li>영한컬럼</li>
+                <li>영한프로젝트</li>
+            </ul>
+        </div>
+    </div>
+    <form>
+        <input type="text"><br>
+        <input type="password"><br>
+        <input type="submit">
+    </form>
+    <div class="second-nav">
+        <ul>
+            <li>첫번째 메뉴</li>
+            <li>두번째 메뉴</li>
+            <li>세번째 메뉴</li>
+            <li>네번째 메뉴</li>
+            <li>다섯번째 메뉴</li>
+            <li>여섯번째 메뉴</li>
+            <li>일곱번째 메뉴</li>
+        </ul>
+    </div>
+</body>
+</html>
