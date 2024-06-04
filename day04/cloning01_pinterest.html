@@ -19,7 +19,7 @@
         a:hover { text-decoration: underline; }
         
         img { margin: 0; border: 0; }
-        body { background-color: #f7f5f5; } 
+        body { /*background-color: #f7f5f5;*/ } 
         /* 디자인 적용 */
         #main-section { margin: 0 auto; margin-top: 80px; }
         .paper { width: 180px; margin: 10px 5px; padding: 0;
@@ -63,7 +63,7 @@
             };
 
             var getPapers = function() {
-                for (var i = 0; i < 100; i++) {
+                for (var i = 0; i < 30; i++) {
                     // ` 멀티라인, ', " + 로 연장
                     $(`<div class="paper">
                             <div class="paper-holder">
@@ -90,12 +90,85 @@
                     isAnimated: false,
                 });
             });
+
+            // 라이트 박스 보기 함수
+            let showLightbox = function(obj){
+                var img_src = obj.getElementsByTagName('img')[0].src; // paper의 이미지 소스
+                $('#random-image').attr('src',img_src);
+
+                $('#darken-background').show(); // display:none-> display:block;
+                $('#darken-background').css('top',$(window).scrollTop());
+                $('body').css('overflow','hidden');
+                $('body').css('darken-background','rgba(33,33,33,0.5)')
+            }
+            // 숨기기 함수
+            let hideLightbox = function(){
+                $('#darken-background').hide();
+                $('body').css('overflow','');
+            }
+
+            $('.paper').click(function(){
+                showLightbox(this);
+            });
+
+            $('#darken-background').click(function(){
+                hideLightbox();
+            });
+
+            $('#lightbox').click(function(event){
+                event.stopPropagation(); // darken-background에서 발생하는 이벤트를 lightbox로 전달
+            });
+
+            // 테마 작업
+            $('#btnLight').addClass('active'); // 라이트테마를 기본
+
+            $('#btnLight').click(function(){
+                $('html').attr('data-bs-theme','light');
+                $('#btnDark').removeClass('active');
+                $('#btnLight').addClass('active');
+                $('#iconTheme').attr('class','bi bi-brightness-high-fill');
+                $('#fix-header').attr('class','main-header p-3 mb-3 fixed-top bg-white');
+            });
+            $('#btnDark').click(function(){
+                $('html').attr('data-bs-theme','dark');
+                $('#btnDark').addClass('active');
+                $('#btnLight').removeClass('active');
+                $('#iconTheme').attr('class','bi bi-moon-stars-fill');
+                $('#fix-header').attr('class','main-header p-3 mb-3 fixed-top bg-black');
+            });
+            // css body->background제거!, main-header여역 class의 bg-white 제거
+
         });
+
     </script>
 </head>
 <body>
+    <!-- 오른쪽아래 바닥 테마변경 아이콘영역 -->
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle z-3">
+        <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" 
+                data-bs-toggle="dropdown" id="bd-theme" type="button">
+            <i id="iconTheme" class="bi bi-brightness-high-fill"></i>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <button id="btnLight" type="button" class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="light" aria-pressed="true">
+                    <i class="bi bi-brightness-high-fill"></i>&nbsp;Light
+                </button>
+            </li>
+            <li>
+                <button id="btnDark" type="button" class="dropdown-item d-flex align-items-center"
+                        data-bs-theme-value="dark" aria-pressed="false">
+                    <i class="bi bi-moon-stars-fill"></i>&nbsp;Dark
+                </button>
+            </li>
+        </ul>
+    </div>
     <!-- 머리글 영역시작 -->
-    <div class="main-header p-3 mb-3 fixed-top bg-white">
+    <div id="fix-header" class="main-header p-3 mb-3 fixed-top bg-white">
+
+    </div>
+    <div class="main-header p-3 mb-3 fixed-top">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center">
                 <a href="/" class="d-flex">
