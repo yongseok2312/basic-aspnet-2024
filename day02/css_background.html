@@ -7,21 +7,41 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
         /* 배경이미지 */
-        body{
-            /*background-color: gray;
-            background-image: url('./001.gif');
-            background-repeat: no-repeat;
+        body {
+            /* background-color: #d3d3d3;
+            background-image: url('./backtile.gif');
+            background-repeat: no-repeat; 
             background-position: top;
-            background-attachment: fixed;*/
-            background: url('./001.gif') reapeat fixed top gray;
+            background-attachment: fixed; */
+            background: url('./backtile.gif') repeat fixed top #d3d3d3;
         }
-        p{
+        /* xx-small ~ xx-large, px, %, em... */
+        p {
             font-size: 20px;
-            font-family: Nanumgothic;
+            font-family: NanumGothic;
+            font-style: normal;
+            font-weight: bold;
+            text-align: right;
+        }
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .test {
+            width: 300px; height: 150px;
+            background: #ff0000;
+            background: linear-gradient(0deg,#ff0000 0%, #00ff00 80%);
+            background: -webkit-linear-gradient(0deg,#ff0000 0%, #00ff00 80%);
+            background: -moz-linear-gradient(0deg,#ff0000 0%, #00ff00 80%);
         }
     </style>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus provident et beatae alias perferendis enim nisi numquam sint modi, eveniet possimus facilis, est cum dolorum ab similique assumenda. Reprehenderit, deleniti?</p>
+    <a href="https://www.naver.com">네이버</a>
+    <p>Lorem ipsum dolor sit amet.</p>
+
+    <div class="test"></div>
 </body>
 </html>
