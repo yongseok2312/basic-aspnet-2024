@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20240725012521_ㅇㅇㄹㄹ.cs" />
+    <Compile Remove="Migrations\20240725012521_ㅇㅇㄹㄹ.Designer.cs" />
+    <Compile Remove="Migrations\20240725012530_MyDBCon.cs" />
+    <Compile Remove="Migrations\20240725012530_MyDBCon.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +25,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
+    <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.17.0" />
   </ItemGroup>
 
 </Project>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyPortfolio.Data;
 
@@ -11,9 +12,11 @@ using MyPortfolio.Data;
 namespace MyPortfolio.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240724023115_ModelsToDb")]
+    partial class ModelsToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,7 +88,6 @@ namespace MyPortfolio.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordCheck")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNum")
@@ -113,7 +115,7 @@ namespace MyPortfolio.Migrations
             modelBuilder.Entity("MyPortfolio.Models.Board", b =>
                 {
                     b.HasOne("MyPortfolio.Models.User", "User")
-                        .WithMany("Board")
+                        .WithMany("Boards")
                         .HasForeignKey("UserId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -123,7 +125,7 @@ namespace MyPortfolio.Migrations
 
             modelBuilder.Entity("MyPortfolio.Models.User", b =>
                 {
-                    b.Navigation("Board");
+                    b.Navigation("Boards");
                 });
 #pragma warning restore 612, 618
         }
