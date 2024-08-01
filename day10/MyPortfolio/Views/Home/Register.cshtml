@@ -21,11 +21,11 @@
 
         <div class="col">
             <h4 class="mb-3">기본입력사항</h4>
-            <form class="needs-validation" asp-action="Register" novalidate="Post">
+            <form class="needs-validation" asp-controller="Home" asp-action="Register" novalidate method="post">
                 <div class="row g-3">
                     <div class="col-12">
                         <label asp-for="UserEmail" class="form-label">이메일 주소(아이디로 사용)</label>
-                        <!-- input 태그의 asp-for는 HTML로 렌더링된 뒤 id와 name으로 변환-->
+                        @* input 태그의 asp-for는 HTML로 렌더링된 뒤 id=와 name=으로 변환됨 *@
                         <input type="email" class="form-control" asp-for="UserEmail" placeholder="you@example.com" required>
                         <div class="invalid-feedback">
                             이메일 주소는 필수입니다.
@@ -55,7 +55,7 @@
 
                     <div class="col-12">
                         <label asp-for="Password" class="form-label">비밀번호</label>
-                        <input type="password" class="form-control" placeholder="특수문자1개이상, 숫자, 영문자포함 8자 이상" asp-for="Password" required>
+                        <input type="password" class="form-control" asp-for="Password" placeholder="특수문자1개이상, 숫자,영문자포함 8자 이상" required>
                         <div class="invalid-feedback">
                             비밀번호는 필수입니다.
                         </div>
@@ -68,7 +68,6 @@
                             비밀번호 확인은 필수입니다.
                         </div>
                         <span asp-validation-for="PasswordCheck" class="text-danger"></span>
-
                     </div>
                 </div>
 

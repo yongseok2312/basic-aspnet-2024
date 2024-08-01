@@ -14,6 +14,8 @@
     var num = ViewBag.TotalCount - ((page - 1) * 10); // 전체 게시글 수를 (현재페이지-1)값과 페이지당 게시글수 곱을 빼기
 }
 
+<partial name="_Notification" />
+
 <style>
     /* 마우스가 없을땐 밑줄없이 */
     a {
@@ -30,9 +32,12 @@
     <div class="container px-5">
         <div class="row justify-content-between p-2">
             <div class="col-3">
-                <a asp-controller="Board" asp-action="Create" class="btn btn-primary">
-                    <i class="bi bi-file-earmark-plus-fill"></i>&nbsp;글 작성
-                </a>
+                @if (Context.Session.GetInt32("USER_LOGIN_KEY") != null)
+                {
+                    <a asp-controller="Board" asp-action="Create" class="btn btn-primary">
+                        <i class="bi bi-file-earmark-plus-fill"></i>&nbsp;글 작성
+                    </a>
+                }                
             </div>
             <div class="col-9 text-end">
                 <form asp-action="Index" method="GET">
@@ -48,11 +53,11 @@
                     <th style="width:3rem;">
                         번호
                     </th>
-                    <th style="width:8rem;">
+                    @* <th style="width:8rem;">
                         @Html.DisplayNameFor(model => model.Name)
-                    </th>
+                    </th> *@
                     <th style="width:8rem;">
-                        @Html.DisplayNameFor(model => model.UserId)
+                        @Html.DisplayNameFor(model => model.UserName)
                     </th>
                     <th style="width:17rem;">
                         @Html.DisplayNameFor(model => model.Title)
@@ -77,11 +82,11 @@
                 {
                     <tr>
                         <td class="text-end pe-3">@(num--)</td>
-                        <td>
+                        @* <td>
                             @Html.DisplayFor(modelItem => item.Name)
-                        </td>
+                        </td> *@
                         <td>
-                            @Html.DisplayFor(modelItem => item.UserId)
+                            @Html.DisplayFor(modelItem => item.UserName)
                         </td>
                         <td>
                             <a asp-controller="Board" asp-action="Details" asp-route-id="@item.Id">

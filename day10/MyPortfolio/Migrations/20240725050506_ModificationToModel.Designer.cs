@@ -12,8 +12,8 @@ using MyPortfolio.Data;
 namespace MyPortfolio.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240725012530_MyDBCon")]
-    partial class MyDBCon
+    [Migration("20240725050506_ModificationToModel")]
+    partial class ModificationToModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,11 +43,6 @@ namespace MyPortfolio.Migrations
                     b.Property<DateTime?>("ModDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<DateTime?>("RegDate")
                         .HasColumnType("datetime2");
 
@@ -56,17 +51,15 @@ namespace MyPortfolio.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int>("UserId1")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Board");
                 });
@@ -88,7 +81,6 @@ namespace MyPortfolio.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordCheck")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNum")
@@ -116,8 +108,8 @@ namespace MyPortfolio.Migrations
             modelBuilder.Entity("MyPortfolio.Models.Board", b =>
                 {
                     b.HasOne("MyPortfolio.Models.User", "User")
-                        .WithMany("Board")
-                        .HasForeignKey("UserId1")
+                        .WithMany("Boards")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -126,7 +118,7 @@ namespace MyPortfolio.Migrations
 
             modelBuilder.Entity("MyPortfolio.Models.User", b =>
                 {
-                    b.Navigation("Board");
+                    b.Navigation("Boards");
                 });
 #pragma warning restore 612, 618
         }
